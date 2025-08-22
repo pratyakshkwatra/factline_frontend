@@ -1,0 +1,345 @@
+// dart format width=80
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+// **************************************************************************
+// AutoRouterGenerator
+// **************************************************************************
+
+// ignore_for_file: type=lint
+// coverage:ignore-file
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:factline/api/models/post.dart' as _i11;
+import 'package:factline/loading.dart' as _i4;
+import 'package:factline/screens/add_post.dart' as _i1;
+import 'package:factline/screens/auth/create_account.dart' as _i2;
+import 'package:factline/screens/auth/login.dart' as _i5;
+import 'package:factline/screens/home.dart' as _i3;
+import 'package:factline/screens/news_full.dart' as _i6;
+import 'package:factline/services/auth.dart' as _i9;
+import 'package:flutter/material.dart' as _i8;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i10;
+
+/// generated route for
+/// [_i1.AddPostScreen]
+class AddPostRoute extends _i7.PageRouteInfo<AddPostRouteArgs> {
+  AddPostRoute({
+    _i8.Key? key,
+    required _i9.AuthService authService,
+    required _i10.FlutterSecureStorage secureStorage,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+         AddPostRoute.name,
+         args: AddPostRouteArgs(
+           key: key,
+           authService: authService,
+           secureStorage: secureStorage,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'AddPostRoute';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AddPostRouteArgs>();
+      return _i1.AddPostScreen(
+        key: args.key,
+        authService: args.authService,
+        secureStorage: args.secureStorage,
+      );
+    },
+  );
+}
+
+class AddPostRouteArgs {
+  const AddPostRouteArgs({
+    this.key,
+    required this.authService,
+    required this.secureStorage,
+  });
+
+  final _i8.Key? key;
+
+  final _i9.AuthService authService;
+
+  final _i10.FlutterSecureStorage secureStorage;
+
+  @override
+  String toString() {
+    return 'AddPostRouteArgs{key: $key, authService: $authService, secureStorage: $secureStorage}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AddPostRouteArgs) return false;
+    return key == other.key &&
+        authService == other.authService &&
+        secureStorage == other.secureStorage;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ authService.hashCode ^ secureStorage.hashCode;
+}
+
+/// generated route for
+/// [_i2.CreateAccountScreen]
+class CreateAccountRoute extends _i7.PageRouteInfo<CreateAccountRouteArgs> {
+  CreateAccountRoute({
+    _i8.Key? key,
+    required _i9.AuthService authService,
+    required _i10.FlutterSecureStorage secureStorage,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+         CreateAccountRoute.name,
+         args: CreateAccountRouteArgs(
+           key: key,
+           authService: authService,
+           secureStorage: secureStorage,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'CreateAccountRoute';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CreateAccountRouteArgs>();
+      return _i2.CreateAccountScreen(
+        key: args.key,
+        authService: args.authService,
+        secureStorage: args.secureStorage,
+      );
+    },
+  );
+}
+
+class CreateAccountRouteArgs {
+  const CreateAccountRouteArgs({
+    this.key,
+    required this.authService,
+    required this.secureStorage,
+  });
+
+  final _i8.Key? key;
+
+  final _i9.AuthService authService;
+
+  final _i10.FlutterSecureStorage secureStorage;
+
+  @override
+  String toString() {
+    return 'CreateAccountRouteArgs{key: $key, authService: $authService, secureStorage: $secureStorage}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CreateAccountRouteArgs) return false;
+    return key == other.key &&
+        authService == other.authService &&
+        secureStorage == other.secureStorage;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ authService.hashCode ^ secureStorage.hashCode;
+}
+
+/// generated route for
+/// [_i3.HomeScreen]
+class HomeRoute extends _i7.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    _i8.Key? key,
+    required _i9.AuthService authService,
+    required _i10.FlutterSecureStorage secureStorage,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+         HomeRoute.name,
+         args: HomeRouteArgs(
+           key: key,
+           authService: authService,
+           secureStorage: secureStorage,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'HomeRoute';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<HomeRouteArgs>();
+      return _i3.HomeScreen(
+        key: args.key,
+        authService: args.authService,
+        secureStorage: args.secureStorage,
+      );
+    },
+  );
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({
+    this.key,
+    required this.authService,
+    required this.secureStorage,
+  });
+
+  final _i8.Key? key;
+
+  final _i9.AuthService authService;
+
+  final _i10.FlutterSecureStorage secureStorage;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key, authService: $authService, secureStorage: $secureStorage}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! HomeRouteArgs) return false;
+    return key == other.key &&
+        authService == other.authService &&
+        secureStorage == other.secureStorage;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ authService.hashCode ^ secureStorage.hashCode;
+}
+
+/// generated route for
+/// [_i4.LoadingScreen]
+class LoadingRoute extends _i7.PageRouteInfo<void> {
+  const LoadingRoute({List<_i7.PageRouteInfo>? children})
+    : super(LoadingRoute.name, initialChildren: children);
+
+  static const String name = 'LoadingRoute';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.LoadingScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i5.LoginScreen]
+class LoginRoute extends _i7.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    _i8.Key? key,
+    required _i9.AuthService authService,
+    required _i10.FlutterSecureStorage secureStorage,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+         LoginRoute.name,
+         args: LoginRouteArgs(
+           key: key,
+           authService: authService,
+           secureStorage: secureStorage,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'LoginRoute';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<LoginRouteArgs>();
+      return _i5.LoginScreen(
+        key: args.key,
+        authService: args.authService,
+        secureStorage: args.secureStorage,
+      );
+    },
+  );
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({
+    this.key,
+    required this.authService,
+    required this.secureStorage,
+  });
+
+  final _i8.Key? key;
+
+  final _i9.AuthService authService;
+
+  final _i10.FlutterSecureStorage secureStorage;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key, authService: $authService, secureStorage: $secureStorage}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! LoginRouteArgs) return false;
+    return key == other.key &&
+        authService == other.authService &&
+        secureStorage == other.secureStorage;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ authService.hashCode ^ secureStorage.hashCode;
+}
+
+/// generated route for
+/// [_i6.NewsFullScreen]
+class NewsFullRoute extends _i7.PageRouteInfo<NewsFullRouteArgs> {
+  NewsFullRoute({
+    _i8.Key? key,
+    required _i11.Post post,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+         NewsFullRoute.name,
+         args: NewsFullRouteArgs(key: key, post: post),
+         initialChildren: children,
+       );
+
+  static const String name = 'NewsFullRoute';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NewsFullRouteArgs>();
+      return _i6.NewsFullScreen(key: args.key, post: args.post);
+    },
+  );
+}
+
+class NewsFullRouteArgs {
+  const NewsFullRouteArgs({this.key, required this.post});
+
+  final _i8.Key? key;
+
+  final _i11.Post post;
+
+  @override
+  String toString() {
+    return 'NewsFullRouteArgs{key: $key, post: $post}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! NewsFullRouteArgs) return false;
+    return key == other.key && post == other.post;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ post.hashCode;
+}
