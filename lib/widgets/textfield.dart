@@ -23,11 +23,11 @@ class RoundedInputField extends StatelessWidget {
       controller: controller,
       obscureText: isPassword,
       maxLines: maxLines ?? 1,
-      style: GoogleFonts.poppins(color: Colors.black),
+      style: GoogleFonts.merriweather(color: Colors.black),
       decoration: InputDecoration(
         prefixIcon: icon != null ? Icon(icon, color: Colors.black) : null,
         hintText: hintText,
-        hintStyle: GoogleFonts.poppins(color: Colors.black),
+        hintStyle: GoogleFonts.merriweather(color: Colors.black),
         filled: true,
         fillColor: Colors.grey.withValues(alpha: 0.1),
         contentPadding: const EdgeInsets.symmetric(

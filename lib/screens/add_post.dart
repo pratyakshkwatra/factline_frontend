@@ -32,7 +32,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xffF8F5E9),
       floatingActionButton: FloatingActionButton.extended(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(18),
@@ -84,7 +84,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           children: [
             Text(
               "Post",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.merriweather(
                 fontWeight: FontWeight.w600,
                 fontSize: 22,
                 color: Colors.white,
@@ -119,7 +119,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         const SizedBox(width: 8),
                         Text(
                           "Add a News Article",
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.merriweather(
                             fontWeight: FontWeight.w600,
                             fontSize: 22,
                             color: Colors.black,

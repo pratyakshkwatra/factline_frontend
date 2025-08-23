@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Factline',
       routerConfig: _appRouter.config(),
+      themeAnimationStyle: AnimationStyle(duration: Duration(seconds: 2)),
     );
   }
 }

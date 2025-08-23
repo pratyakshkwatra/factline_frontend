@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:factline/api/models/post.dart';
+import 'package:factline/api/models/user.dart';
 import 'package:factline/api/post.dart';
 import 'package:factline/router/router.gr.dart';
 import 'package:factline/widgets/tag.dart';
@@ -10,7 +13,13 @@ import 'package:recase/recase.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class CustomRecommendations extends StatefulWidget {
-  const CustomRecommendations({super.key});
+  final User user;
+  final bool restrictedView;
+  const CustomRecommendations({
+    super.key,
+    required this.user,
+    required this.restrictedView,
+  });
 
   @override
   State<CustomRecommendations> createState() => _CustomRecommendationsState();
@@ -25,7 +34,7 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: widget.restrictedView ? 16 : 0),
       child: FutureBuilder(
         future: getNewsArticles(),
         builder: (context, snapshot) {
@@ -38,25 +47,15 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Shimmer(
-                    color: Colors.grey.shade400,
+                    color: Color.fromARGB(255, 238, 233, 213),
                     child: Container(
                       margin: EdgeInsets.only(bottom: 16),
                       width: MediaQuery.of(context).size.width,
                       height: 256,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
+                        color: Colors.white,
 
-                        border: Border.all(
-                          color: Colors.grey.shade200.withValues(alpha: 0.6),
-                          width: 3,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade400.withValues(alpha: 0.2),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          ),
-                        ],
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                   ),
@@ -69,7 +68,7 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
 
           return ListView.builder(
             shrinkWrap: true,
-            itemCount: posts.length,
+            itemCount: min(posts.length, 5),
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               Post post = posts[index];
@@ -85,19 +84,18 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                   margin: EdgeInsets.only(bottom: 16),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color(0xffFFFFFF).withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Colors.grey.shade200.withValues(alpha: 0.6),
-                      width: 3,
-                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.shade400.withValues(alpha: 0.2),
-                        spreadRadius: 1,
+                        color: const Color(0xffFFFFFF).withValues(alpha: 0.7),
                         blurRadius: 10,
                       ),
                     ],
+                    border: Border.all(
+                      color: const Color(0xffFFFFFF),
+                      width: 2,
+                    ),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                   child: Column(
@@ -115,7 +113,17 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                               CustomTag(tag: post.tags[2]),
                             ],
                           ),
-                          Icon(Icons.more_horiz, color: Colors.grey.shade400),
+                          if (widget.user.role == Role.editor)
+                            GestureDetector(
+                              onTap: () async {
+                                await PostAPI().deletePost(post.id);
+                                setState(() {});
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.red.shade400,
+                              ),
+                            ),
                         ],
                       ),
                       const SizedBox(height: 8),
@@ -130,7 +138,7 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                                     : "❌ ") +
                                 post.title,
                           ).titleCase,
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.merriweather(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: Colors.black,
@@ -142,7 +150,7 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Text(
                           post.summaryEasy!,
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.merriweather(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: Colors.black,
@@ -179,14 +187,19 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                                     vertical: 2,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Colors.grey.shade200,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      210,
+                                      207,
+                                      207,
+                                    ).withValues(alpha: 0.25),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Text(
                                     NumberFormat.compact().format(
                                       post.upvoteDownvoteCount,
                                     ),
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.merriweather(
                                       color: Colors.grey.shade600,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -225,7 +238,7 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                                 SizedBox(width: 4),
                                 Text(
                                   NumberFormat.compact().format(post.viewCount),
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.merriweather(
                                     color: Colors.grey.shade600,
                                     fontWeight: FontWeight.w400,
                                   ),

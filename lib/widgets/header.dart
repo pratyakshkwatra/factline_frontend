@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomHeader extends StatelessWidget {
+class CustomHeader extends StatefulWidget {
   final String title;
-  const CustomHeader({super.key, required this.title});
+  final Function(BuildContext context)? onViewAllTap;
+  const CustomHeader({
+    super.key,
+    required this.title,
+    required this.onViewAllTap,
+  });
 
+  @override
+  State<CustomHeader> createState() => _CustomHeaderState();
+}
+
+class _CustomHeaderState extends State<CustomHeader> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,21 +23,27 @@ class CustomHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
-            style: GoogleFonts.poppins(
+            widget.title,
+            style: GoogleFonts.merriweather(
               fontWeight: FontWeight.w600,
               fontSize: 22,
               color: Colors.black,
             ),
           ),
-          Text(
-            "View All",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              color: Colors.grey.shade500,
+          if (widget.onViewAllTap != null)
+            GestureDetector(
+              onTap: () {
+                widget.onViewAllTap!(context);
+              },
+              child: Text(
+                "View All",
+                style: GoogleFonts.merriweather(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                  color: Colors.grey.shade500,
+                ),
+              ),
             ),
-          ),
         ],
       ),
     );

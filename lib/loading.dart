@@ -32,7 +32,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
     if (user != null) {
       if (mounted) {
         context.router.push(
-          HomeRoute(authService: _authService, secureStorage: _secureStorage),
+          HomeRoute(
+            authService: _authService,
+            secureStorage: _secureStorage,
+            user: user,
+          ),
         );
       }
     } else {

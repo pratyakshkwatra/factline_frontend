@@ -48,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             HomeRoute(
               authService: widget.authService,
               secureStorage: widget.secureStorage,
+              user: user,
             ),
           );
         }
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 16),
                     Text(
                       'Welcome Back',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.merriweather(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -94,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 8),
                     Text(
                       'Login to your account',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.merriweather(
                         fontSize: 16,
                         color: Colors.grey.shade600,
                       ),
@@ -127,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text(
                           "Don't have an account?  ",
-                          style: GoogleFonts.poppins(color: Colors.black),
+                          style: GoogleFonts.merriweather(color: Colors.black),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -140,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             'Create one',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.merriweather(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
                             ),
@@ -196,7 +197,7 @@ class _RoundedButton extends StatelessWidget {
                 )
               : Text(
                   label,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.merriweather(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

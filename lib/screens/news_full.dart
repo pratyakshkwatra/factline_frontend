@@ -15,14 +15,13 @@ class NewsFullScreen extends StatefulWidget {
 
 class _NewsFullScreenState extends State<NewsFullScreen> {
   String? _selectedAlt = "Neutral";
-  bool _showTrustSignals = false;
 
   @override
   Widget build(BuildContext context) {
     final post = widget.post;
 
     return Scaffold(
-      backgroundColor: const Color(0xfff2e3d4),
+      backgroundColor: const Color(0xffF8F5E9),
       floatingActionButton: FloatingActionButton.extended(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
         onPressed: () => context.router.pop(),
@@ -39,7 +38,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
               Text(
                 post.title.toUpperCase(),
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.merriweather(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -60,7 +59,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
 
               if (post.body.isNotEmpty)
                 Card(
-                  color: Colors.white.withValues(alpha: 0.4),
+                  color: const Color(0xffFFFFFF).withValues(alpha: 0.6),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -69,7 +68,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
                     padding: const EdgeInsets.all(16),
                     child: Text(
                       post.body,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.merriweather(
                         fontSize: 14,
                         height: 1.4,
                         color: Colors.black87,
@@ -99,7 +98,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
                   .map(
                     (t) => Text(
                       "#$t",
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.merriweather(
                         fontSize: 12,
                         color: Colors.black87,
                         fontStyle: FontStyle.italic,
@@ -115,18 +114,13 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
-            color: const Color.fromARGB(
-              255,
-              156,
-              156,
-              156,
-            ).withValues(alpha: 0.2),
+             color: const Color(0xffFFFFFF).withValues(alpha: 0.6),
             elevation: 0,
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Text(
                 post.summaryEasy!,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.merriweather(
                   fontSize: 12,
                   fontStyle: FontStyle.italic,
                   color: Colors.black,
@@ -140,7 +134,6 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
         const SizedBox(height: 12),
         const Divider(color: Colors.black),
         const SizedBox(height: 12),
-        _buildSignals(post),
       ],
     );
   }
@@ -184,7 +177,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: const Color.fromARGB(255, 156, 156, 156).withValues(alpha: 0.2),
+        color: const Color(0xffFFFFFF).withValues(alpha: 0.6),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -193,7 +186,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
           children: [
             Text(
               "Alternate Headlines",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.merriweather(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -208,7 +201,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
                 return ChoiceChip(
                   label: Text(
                     key,
-                    style: GoogleFonts.poppins(color: Colors.white),
+                    style: GoogleFonts.merriweather(color: Colors.white),
                   ),
                   selected: selected,
                   onSelected: (_) {
@@ -239,7 +232,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
                     padding: const EdgeInsets.all(12),
                     child: Text(
                       altOptions[_selectedAlt]!,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.merriweather(
                         fontSize: 15,
                         color: Colors.white,
                       ),
@@ -250,88 +243,6 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildSignals(Post post) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (post.trustSignals.isNotEmpty)
-          Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            color: Colors.black87,
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-              ),
-
-              child: ExpansionTile(
-                expansionAnimationStyle: AnimationStyle(
-                  duration: const Duration(milliseconds: 500),
-                ),
-                shape: const Border(),
-                tilePadding: const EdgeInsets.symmetric(horizontal: 12),
-                onExpansionChanged: (expanded) {
-                  setState(() => _showTrustSignals = expanded);
-                },
-                trailing: AnimatedRotation(
-                  turns: _showTrustSignals ? 0.5 : 0,
-                  duration: const Duration(milliseconds: 500),
-                  child: const Icon(Icons.expand_more, color: Colors.white),
-                ),
-
-                title: Text(
-                  "Trust Signals",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                ),
-                children: post.trustSignals
-                    .map(
-                      (s) => Padding(
-                        padding: post.trustSignals.last == s
-                            ? EdgeInsetsGeometry.only(bottom: 8)
-                            : EdgeInsetsGeometry.only(),
-                        child: Card(
-                          color: Colors.grey.shade800.withValues(alpha: 0.5),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 4,
-                            horizontal: 12,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              s,
-                              style: GoogleFonts.poppins(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
-
-        const SizedBox(height: 12),
-
-        if (post.redFlags.isNotEmpty)
-          _chipGroup(
-            Icons.warning_amber_rounded,
-            post.redFlags,
-            Colors.redAccent,
-          ),
-      ],
     );
   }
 
@@ -349,8 +260,8 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
             children: [
               const SizedBox(height: 8),
               Text(
-                "Fact Checked Claims",
-                style: GoogleFonts.poppins(
+                "Claims",
+                style: GoogleFonts.merriweather(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -389,7 +300,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
                       ),
                       title: Text(
                         c.text,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.merriweather(
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontSize: 13,
@@ -458,7 +369,10 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
             Expanded(
               child: Text(
                 label,
-                style: GoogleFonts.poppins(color: Colors.white, fontSize: 13),
+                style: GoogleFonts.merriweather(
+                  color: Colors.white,
+                  fontSize: 13,
+                ),
               ),
             ),
           ],
@@ -470,28 +384,9 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
   Widget _infoChip(IconData icon, String label) {
     return Chip(
       avatar: Icon(icon, size: 16, color: Colors.white),
-      label: Text(label, style: GoogleFonts.poppins(color: Colors.white)),
+      label: Text(label, style: GoogleFonts.merriweather(color: Colors.white)),
       backgroundColor: Colors.black87,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-    );
-  }
-
-  Widget _chipGroup(IconData icon, List<String> items, Color color) {
-    return Wrap(
-      spacing: 6,
-      runSpacing: 6,
-      children: items
-          .map(
-            (e) => Chip(
-              label: Text(e, style: GoogleFonts.poppins(color: Colors.white)),
-              avatar: Icon(icon, size: 16, color: Colors.white),
-              backgroundColor: color,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-          )
-          .toList(),
     );
   }
 }

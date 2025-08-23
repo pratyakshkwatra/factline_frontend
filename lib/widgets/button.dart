@@ -39,7 +39,7 @@ class RoundedButton extends StatelessWidget {
                 )
               : Text(
                   label,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.merriweather(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

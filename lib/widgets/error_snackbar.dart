@@ -3,7 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 void showErrorSnackbar(String message, BuildContext context) {
   final snackBar = SnackBar(
-    content: Text(message, style: GoogleFonts.poppins(color: Colors.white)),
+    content: Text(
+      message,
+      style: GoogleFonts.merriweather(color: Colors.white),
+    ),
     backgroundColor: Colors.redAccent,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

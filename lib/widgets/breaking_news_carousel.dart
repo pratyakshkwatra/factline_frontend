@@ -29,8 +29,8 @@ class BreakingNewsCarousel extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),
                         child: Shimmer(
-                          color: Colors.white,
-                          child: Container(color: Colors.grey.shade300),
+                          color: Color.fromARGB(255, 238, 233, 213),
+                          child: Container(color: Colors.white),
                         ),
                       ),
                     );

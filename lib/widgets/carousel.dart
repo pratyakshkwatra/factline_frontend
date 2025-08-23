@@ -103,7 +103,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                                   ),
                                   child: Text(
                                     "Cred: ${post.credibilityScore}%",
-                                    style: TextStyle(
+                                    style: GoogleFonts.merriweather(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: post.credibilityScore! >= 70
@@ -118,7 +118,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                             post.shortTitle ?? post.title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.merriweather(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -162,7 +162,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                   borderRadius: BorderRadius.circular(8),
                   color: isActive
                       ? Colors.black
-                      : Colors.black.withValues(alpha: 0.25),
+                      : Colors.black.withValues(alpha: 0.5),
                 ),
               ),
             );

@@ -21,7 +21,7 @@ class CustomTag extends StatelessWidget {
           SizedBox(width: 2),
           Text(
             tag,
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.merriweather(
               fontWeight: FontWeight.w400,
               color: Colors.grey.shade300,
               fontSize: 12,

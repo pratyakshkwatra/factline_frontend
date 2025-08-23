@@ -39,7 +39,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
   void _showMessage(String message) {
     final snackBar = SnackBar(
-      content: Text(message, style: GoogleFonts.poppins(color: Colors.white)),
+      content: Text(
+        message,
+        style: GoogleFonts.merriweather(color: Colors.white),
+      ),
       backgroundColor: Colors.deepPurpleAccent,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -68,7 +71,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   const SizedBox(height: 16),
                   Text(
                     'Create Account',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.merriweather(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -77,7 +80,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   const SizedBox(height: 8),
                   Text(
                     'Sign up to get started',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.merriweather(
                       fontSize: 16,
                       color: Colors.grey.shade600,
                     ),
@@ -146,7 +149,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     children: [
                       Text(
                         "Already have an account?  ",
-                        style: GoogleFonts.poppins(color: Colors.black),
+                        style: GoogleFonts.merriweather(color: Colors.black),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -154,7 +157,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         },
                         child: Text(
                           'Login',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.merriweather(
                             color: primary,
                             fontWeight: FontWeight.w600,
                           ),
