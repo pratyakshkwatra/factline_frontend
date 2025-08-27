@@ -63,6 +63,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               padding: const EdgeInsets.all(24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

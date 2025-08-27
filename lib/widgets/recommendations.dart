@@ -103,14 +103,12 @@ class _CustomRecommendationsState extends State<CustomRecommendations> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          Wrap(
                             children: [
                               const SizedBox(width: 8),
                               CustomTag(tag: post.tags[0]),
                               const SizedBox(width: 4),
                               CustomTag(tag: post.tags[1]),
-                              const SizedBox(width: 4),
-                              CustomTag(tag: post.tags[2]),
                             ],
                           ),
                           if (widget.user.role == Role.editor)

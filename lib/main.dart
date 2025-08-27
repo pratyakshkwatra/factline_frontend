@@ -1,9 +1,14 @@
 import 'package:factline/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+    await FMTCObjectBoxBackend().initialise(
+      maxDatabaseSize: 100000000,
+    );
+    await FMTCStore('mapStore').manage.create();
+  
   runApp(MyApp());
 }
 

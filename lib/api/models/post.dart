@@ -27,6 +27,8 @@ class Post {
   final bool isDownvoted;
   final int upvoteDownvoteCount;
   final int viewCount;
+  final double lat;
+  final double long;
 
   Post({
     required this.id,
@@ -55,6 +57,8 @@ class Post {
     required this.isDownvoted,
     required this.upvoteDownvoteCount,
     required this.viewCount,
+    required this.lat,
+    required this.long,
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
@@ -81,7 +85,7 @@ class Post {
         })
         .whereType<String>()
         .toList();
-
+        
     return Post(
       id: json['id'] ?? -1,
       title: json['title'] ?? "",
@@ -117,6 +121,8 @@ class Post {
       isDownvoted: json["is_downvoted"],
       upvoteDownvoteCount: json["upvote_downvote_count"],
       viewCount: json["view_count"],
+      lat: json["latitude"],
+      long: json["longitude"],
     );
   }
 

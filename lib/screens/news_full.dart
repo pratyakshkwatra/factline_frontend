@@ -15,6 +15,7 @@ class NewsFullScreen extends StatefulWidget {
 
 class _NewsFullScreenState extends State<NewsFullScreen> {
   String? _selectedAlt = "Neutral";
+  bool _showTrustSignals = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +99,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
               children: post.tags
                   .map(
                     (t) => Text(
-                      "#$t",
+                      "#${t.replaceAll(' ', '_')}",
                       style: GoogleFonts.merriweather(
                         fontSize: 12,
                         color: Colors.black87,
@@ -114,7 +116,7 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
-             color: const Color(0xffFFFFFF).withValues(alpha: 0.6),
+            color: const Color(0xffFFFFFF).withValues(alpha: 0.6),
             elevation: 0,
             child: Padding(
               padding: const EdgeInsets.all(12),
@@ -133,6 +135,88 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
         _buildAnalysis(post),
         const SizedBox(height: 12),
         const Divider(color: Colors.black),
+        const SizedBox(height: 12),
+        _buildSignals(post),
+      ],
+    );
+  }
+
+  Widget _buildSignals(Post post) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (post.trustSignals.isNotEmpty || post.redFlags.isNotEmpty)
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            color: Colors.black87,
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+              ),
+              child: ExpansionTile(
+                expansionAnimationStyle: AnimationStyle(
+                  duration: const Duration(milliseconds: 500),
+                ),
+                minTileHeight: 16,
+                shape: const Border(),
+                tilePadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 4,
+                ),
+                onExpansionChanged: (expanded) {
+                  setState(() => _showTrustSignals = expanded);
+                },
+                trailing: AnimatedRotation(
+                  turns: _showTrustSignals ? 0.5 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  child: const Icon(Icons.expand_more, color: Colors.white),
+                ),
+                title: Text(
+                  "Trust Signals",
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                ),
+
+                childrenPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+
+                children: [...post.trustSignals, ...post.redFlags]
+                    .map(
+                      (s) => Card(
+                        color: Colors.grey.shade800.withValues(alpha: 0.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        margin: const EdgeInsets.symmetric(vertical: 3),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              s,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+
         const SizedBox(height: 12),
       ],
     );
@@ -251,7 +335,6 @@ class _NewsFullScreenState extends State<NewsFullScreen> {
 
     return Column(
       children: [
-        const SizedBox(height: 8),
         Divider(color: Colors.black87),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
