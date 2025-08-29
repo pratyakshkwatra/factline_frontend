@@ -86,11 +86,6 @@ class _MapTabState extends State<MapTab> {
           children: [
             Row(
               children: [
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: const Icon(Icons.arrow_back_ios, size: 24),
-                ),
-                const SizedBox(width: 8),
                 Text(
                   "News Map",
                   style: GoogleFonts.merriweather(

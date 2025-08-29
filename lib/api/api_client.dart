@@ -9,7 +9,7 @@ class ApiClient {
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   ApiClient._internal() {
-    _dio.options.baseUrl = 'http://localhost:8000';
+    _dio.options.baseUrl = 'http://127.0.0.1:8000';
     _dio.options.connectTimeout = const Duration(seconds: 10);
     _dio.options.receiveTimeout = const Duration(seconds: 10);
     _dio.interceptors.add(
