@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 import 'package:factline/api/models/user.dart';
-import 'package:factline/router/router.gr.dart';
 import 'package:factline/screens/game_ques.dart';
 import 'package:factline/screens/home.dart';
 import 'package:factline/screens/map.dart';

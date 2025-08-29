@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:auto_route/auto_route.dart';
 import 'package:factline/api/models/post.dart';
 import 'package:factline/api/models/user.dart';
 import 'package:factline/api/post.dart';
