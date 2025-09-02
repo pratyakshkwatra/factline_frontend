@@ -145,6 +145,7 @@ class _MapTabState extends State<MapTab> {
                           );
                         }
 
+
                         return FlutterMap(
                           mapController: _mapController,
                           options: MapOptions(
@@ -184,10 +185,10 @@ class _MapTabState extends State<MapTab> {
                                 final score = Random().nextInt(101);
 
                                 final lat =
-                                    28.6139 +
+                                    35.6892 +
                                     (Random().nextDouble() - 0.5) * 0.1;
                                 final lon =
-                                    77.2090 +
+                                    51.389 +
                                     (Random().nextDouble() - 0.5) * 0.1;
 
                                 final color = [
