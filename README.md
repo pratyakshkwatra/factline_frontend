@@ -18,7 +18,7 @@ Factline is a Flutter application designed to help users critically evaluate new
 
 | Claims | Trust Signals | Map | Game |
 | :---: | :---: |:---:|:---:|
-| <img src="assets/screenshots/news_claim.png" width="200"> | <img src="assets/screenshots/news_trust_signals.png" width="200"> |<img src="assets/screenshots/map.png" width="200">| <img src="assets/screenshots/game_home.png" width="200">|
+| <img src="assets/screenshots/news_claim.png" width="200"> | <img src="assets/screenshots/news_trust_signals.png" width="200"> |<img src="assets/screenshots/map.png" width="200">| <img src="assets/screenshots/game_question_attempt.png" width="200">|
 
 ## Getting Started
 
